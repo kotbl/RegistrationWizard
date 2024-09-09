@@ -1,0 +1,71 @@
+<div [formGroup]="formGroup">
+  <div formGroupName="stepOne">
+    <div>
+      <mat-form-field>
+        <mat-label>Login</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="example@mail.com"
+          formControlName="login"
+          required
+        />
+        <mat-error *ngIf="hasLoginError()">
+          Login must be a valid email
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        [type]="hidePassword() ? 'password' : 'text'"
+        matInput
+        required
+        formControlName="password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickPasswordEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hidePassword()"
+      >
+        <mat-icon>{{
+          hidePassword() ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+      <mat-error *ngIf="hasPasswordError()">
+        Password must contain 1 number and 1 capital letter
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Confirm password</mat-label>
+      <input
+        [type]="hideConfirmPassword() ? 'password' : 'text'"
+        matInput
+        required
+        formControlName="confirmPassword"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="clickConfirmPasswordEvent($event)"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hideConfirmPassword()"
+      >
+        <mat-icon>{{
+          hideConfirmPassword() ? "visibility_off" : "visibility"
+        }}</mat-icon>
+      </button>
+      <mat-error *ngIf="hasConfirmPasswordError()">
+        Confirm password must be the same with password
+      </mat-error>
+    </mat-form-field>
+
+    <mat-checkbox class="example-margin" formControlName="isAgree"
+      >Agree to work for food
+    </mat-checkbox>
+    <mat-error *ngIf="hasIsAgreeError()"> Your consent is required </mat-error>
+  </div>
+</div>

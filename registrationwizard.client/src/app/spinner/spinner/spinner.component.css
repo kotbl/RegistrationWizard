@@ -1,0 +1,16 @@
+.overlay {
+    position: absolute;
+    inset: 10px;
+    border-radius: 10;
+    background-color: #fff;
+    z-index: 2;
+    opacity: 0.4;
+}
+.spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+}

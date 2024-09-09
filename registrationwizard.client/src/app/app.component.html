@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <app-spinner></app-spinner>
+    <form [formGroup]="userForm">
+      <mat-stepper #stepper>
+        <mat-step>
+          <div class="step-container" formGroupName="stepOne">
+            <h2>Step 1</h2>
+            <app-registration-step1></app-registration-step1>
+            <div class="actions">
+              <button mat-raised-button (click)="goNext(stepper)">
+                Go to step 2
+              </button>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step>
+          <div class="step-container" formGroupName="stepTwo">
+            <h2>Step 2</h2>
+            <app-registration-step2></app-registration-step2>
+            <div class="actions">
+              <button mat-raised-button (click)="saveForm(stepper)">
+                Save
+              </button>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step>
+          <div class="step-container">
+            <app-registration-step3></app-registration-step3>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </form>
+  </div>
+</div>

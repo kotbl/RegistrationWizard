@@ -1,0 +1,25 @@
+<div [formGroup]="formGroup">
+  <div [formGroupName]="formGroupName">
+    <mat-form-field>
+      <mat-select
+        [formControlName]="formControlName"
+        [placeholder]="placeholder"
+        required
+        #selectControl
+      >
+        <mat-option>
+          <ngx-mat-select-search
+            [formControl]="filterCtrl"
+            noEntriesFoundLabel="No matches found"
+          ></ngx-mat-select-search>
+        </mat-option>
+        <mat-option *ngFor="let item of filteredData | async" [value]="item">
+          {{ item.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="hasError()">
+        {{ errorMessage }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+</div>
